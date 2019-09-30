@@ -11,13 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println(DASHED_LINE);
-	    System.out.println("RedditStat Grapher");
-        System.out.println("Please choose an domain you want to analyze today: ");
-        System.out.println("a: r/all");
-        System.out.println("s: a specific subreddit");
-        System.out.println("p: a post");
-        System.out.println(DASHED_LINE);
+
 
         char type = reader.readLine().charAt(0);
         while(true) {

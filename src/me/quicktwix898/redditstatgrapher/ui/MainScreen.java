@@ -10,7 +10,7 @@ public class MainScreen implements TerminalScreen {
             "a: r/all\n" +
             "s: a specific subreddit\n" +
             "p: a post\n" +
-            DASHED_LINE;
+            DASHED_LINE + "\n";
 
     @Override
     public String getDisplay() {
@@ -22,7 +22,12 @@ public class MainScreen implements TerminalScreen {
         return INSTANCE;
     }
 
-    public enum MainScreenChoice implements TerminalChoice {
+    @Override
+    public TerminalScreen getScreen(char c) {
+        return MainScreenChoice.get(c).getScreen();
+    }
+
+    private enum MainScreenChoice implements TerminalChoice {
         all('a', ),
          subreddit('b', ),
         post('c', );
@@ -45,8 +50,7 @@ public class MainScreen implements TerminalScreen {
             return screen;
         }
 
-        @Override
-        public MainScreenChoice get(char c){
+        public static MainScreenChoice get(char c){
             for(MainScreenChoice choice : values()) {
                 if(choice.character == c){
                     return choice;
