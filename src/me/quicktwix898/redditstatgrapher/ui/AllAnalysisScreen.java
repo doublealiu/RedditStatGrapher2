@@ -24,11 +24,11 @@ public class AllAnalysisScreen implements TerminalScreen {
     }
 
     @Override
-    public TerminalScreen getScreen(char c) {
-        return AllAnalysisScreenChoice.get(c).getScreen();
+    public AllAnalysisScreenChoice getChoice(char c) {
+        return AllAnalysisScreenChoice.get(c);
     }
 
-    private enum AllAnalysisScreenChoice implements TerminalChoice {
+    public enum AllAnalysisScreenChoice implements TerminalChoice {
         subreddit('s', ),
         words('w', ),
         popularity('p', ),

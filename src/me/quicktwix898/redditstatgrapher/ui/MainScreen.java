@@ -22,11 +22,11 @@ public class MainScreen implements TerminalScreen {
     }
 
     @Override
-    public TerminalScreen getScreen(char c) {
-        return MainScreenChoice.get(c).getScreen();
+    public MainScreenChoice getChoice(char c) {
+        return MainScreenChoice.get(c);
     }
 
-    private enum MainScreenChoice implements TerminalChoice {
+    public enum MainScreenChoice implements TerminalChoice {
         all('a', AllAnalysisScreen.getInstance()),
          subreddit('s', ),
         post('p', );
