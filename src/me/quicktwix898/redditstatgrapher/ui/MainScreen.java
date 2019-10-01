@@ -29,8 +29,8 @@ public class MainScreen implements TerminalScreen {
 
     private enum MainScreenChoice implements TerminalChoice {
         all('a', ),
-         subreddit('b', ),
-        post('c', );
+         subreddit('s', ),
+        post('p', );
 
         char character;
         TerminalScreen screen;
