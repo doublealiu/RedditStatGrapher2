@@ -5,7 +5,5 @@ public interface TerminalScreen {
 
     String getDisplay();
 
-    TerminalScreen getInstance();
-
     TerminalScreen getScreen(char c);
 }

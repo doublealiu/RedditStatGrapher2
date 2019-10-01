@@ -4,7 +4,7 @@ import me.quicktwix898.redditstatgrapher.Main;
 
 public class AllAnalysisScreen implements TerminalScreen {
 
-    final static MainScreen INSTANCE = new MainScreen();
+    final static AllAnalysisScreen INSTANCE = new AllAnalysisScreen();
 
     final String message = DASHED_LINE + "\n" +
             "Please choose an analysis:\n" +
@@ -19,8 +19,7 @@ public class AllAnalysisScreen implements TerminalScreen {
         return message;
     }
 
-    @Override
-    public TerminalScreen getInstance() {
+    public static TerminalScreen getInstance() {
         return INSTANCE;
     }
 

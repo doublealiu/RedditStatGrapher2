@@ -17,8 +17,7 @@ public class MainScreen implements TerminalScreen {
         return message;
     }
 
-    @Override
-    public MainScreen getInstance() {
+    public static MainScreen getInstance() {
         return INSTANCE;
     }
 
@@ -28,7 +27,7 @@ public class MainScreen implements TerminalScreen {
     }
 
     private enum MainScreenChoice implements TerminalChoice {
-        all('a', ),
+        all('a', AllAnalysisScreen.getInstance()),
          subreddit('s', ),
         post('p', );
 
