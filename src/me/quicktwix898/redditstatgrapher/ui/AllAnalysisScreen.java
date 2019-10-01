@@ -13,6 +13,7 @@ public class AllAnalysisScreen implements TerminalScreen {
             "p: subreddit popularity over time in r/all\n" +
             "a: frequently active times in r/all\n" +
             DASHED_LINE + "\n";
+
     @Override
     public String getDisplay() {
         return message;
@@ -23,7 +24,12 @@ public class AllAnalysisScreen implements TerminalScreen {
         return INSTANCE;
     }
 
-    public enum AllAnalysisScreenChoice implements TerminalChoice {
+    @Override
+    public TerminalScreen getScreen(char c) {
+        return AllAnalysisScreenChoice.get(c).getScreen();
+    }
+
+    private enum AllAnalysisScreenChoice implements TerminalChoice {
         subreddit('s', ),
         words('w', ),
         popularity('p', ),
