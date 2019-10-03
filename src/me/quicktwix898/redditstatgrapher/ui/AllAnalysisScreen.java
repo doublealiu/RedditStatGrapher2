@@ -24,9 +24,7 @@ public class AllAnalysisScreen implements TerminalScreen {
     }
 
     @Override
-    public AllAnalysisScreenChoice getChoice(char c) {
-        return AllAnalysisScreenChoice.get(c);
-    }
+    public TerminalAction getAction(char c) { return AllAnalysisScreenChoice.get(c).getScreen(); }
 
     public enum AllAnalysisScreenChoice implements TerminalChoice {
         subreddit('s', ),
