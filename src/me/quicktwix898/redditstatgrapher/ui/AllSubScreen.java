@@ -14,7 +14,32 @@ public class AllSubScreen implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalAction getAction(char c) { return AllSubScreenChoice.get(c).getScreen; }
+    public TerminalAction getAction(char c) { return AllSubScreenChoice.get(c).getScreen(); }
 
-    public enum AllSubScreenChoice
+    public enum AllSubScreenChoice implements TerminalChoice{
+        bar('b', ),
+        pie('p', );
+
+        char character;
+        TerminalScreen screen;
+
+        AllSubScreenChoice(char character, TerminalScreen screen) {
+            this.character = character;
+            this.screen = screen;
+        }
+        @Override
+        public TerminalScreen getScreen() { return screen; }
+
+        @Override
+        public char getCharacter() { return character; }
+
+        public static AllSubScreenChoice get(char c) {
+            for(AllSubScreenChoice choice : values()) {
+                if (choice.character == c) {
+                    return choice;
+                }
+            }
+            return null;
+        }
+    }
 }
