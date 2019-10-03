@@ -22,8 +22,8 @@ public class MainScreen implements TerminalScreen {
     }
 
     @Override
-    public MainScreenChoice getChoice(char c) {
-        return MainScreenChoice.get(c);
+    public TerminalAction getAction(char c) {
+        return MainScreenChoice.get(c).getScreen();
     }
 
     public enum MainScreenChoice implements TerminalChoice {

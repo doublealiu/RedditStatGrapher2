@@ -14,8 +14,8 @@ public class SubAnalysisScreen implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public SubAnalysisScreenChoice getChoice(char c) {
-        return SubAnalysisScreenChoice.get(c);
+    public TerminalAction getAction(char c) {
+        return SubAnalysisScreenChoice.get(c).getScreen();
     }
 
     public enum SubAnalysisScreenChoice implements TerminalChoice{

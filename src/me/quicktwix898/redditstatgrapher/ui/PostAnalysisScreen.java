@@ -13,8 +13,8 @@ public class PostAnalysisScreen implements TerminalScreen {
 
     public static TerminalScreen getInsstance() { return INSTANCE; }
 
-    public PostAnalysisScreenChoice getChoice(char c) {
-        return PostAnalysisScreenChoice.get(c);
+    public TerminalAction getAction(char c) {
+        return PostAnalysisScreenChoice.get(c).getScreen();
     }
 
     public enum PostAnalysisScreenChoice implements TerminalChoice{
@@ -30,13 +30,13 @@ public class PostAnalysisScreen implements TerminalScreen {
         }
 
         @Override
-        public TerminalScreen getScreen{ return screen; }
+        public TerminalScreen getScreen(){ return screen; }
 
         @Override
-        public char getCharacter{ return character; }
+        public char getCharacter(){ return character; }
 
         public static PostAnalysisScreenChoice get(char c) {
-            for(PostAnalysisScreenChoice choice : value()) {
+            for(PostAnalysisScreenChoice choice : values()) {
                 if (choice.character == c) {
                     return choice;
                 }
