@@ -5,7 +5,7 @@ public interface TerminalScreen extends TerminalAction {
 
     String getDisplay();
 
-    TerminalAction getAction(char c);
+    TerminalChoice getChoice(String s);
 
     @Override
     default void action() {

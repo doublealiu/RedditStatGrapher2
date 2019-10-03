@@ -1,7 +1,5 @@
 package me.quicktwix898.redditstatgrapher.ui;
 
-import me.quicktwix898.redditstatgrapher.Main;
-
 public class AllAnalysisScreen implements TerminalScreen {
 
     final static AllAnalysisScreen INSTANCE = new AllAnalysisScreen();
@@ -24,7 +22,7 @@ public class AllAnalysisScreen implements TerminalScreen {
     }
 
     @Override
-    public TerminalAction getAction(char c) { return AllAnalysisScreenChoice.get(c).getScreen(); }
+    public TerminalChoice getChoice(String s) { return AllAnalysisScreenChoice.get(s); }
 
     public enum AllAnalysisScreenChoice implements TerminalChoice {
         subreddit('s', ),

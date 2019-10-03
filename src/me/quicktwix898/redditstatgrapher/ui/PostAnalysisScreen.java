@@ -11,10 +11,10 @@ public class PostAnalysisScreen implements TerminalScreen {
     @Override
     public String getDisplay() { return message; }
 
-    public static TerminalScreen getInsstance() { return INSTANCE; }
+    public static TerminalScreen getInstance() { return INSTANCE; }
 
-    public TerminalAction getAction(char c) {
-        return PostAnalysisScreenChoice.get(c).getScreen();
+    public TerminalChoice getChoice(String s) {
+        return PostAnalysisScreenChoice.get(s);
     }
 
     public enum PostAnalysisScreenChoice implements TerminalChoice{

@@ -12,17 +12,22 @@ public class UIHandler {
 
     //instance
     final Scanner scanner = new Scanner(System.in);
-    TerminalScreen current;
+    TerminalAction currentScreen;
 
     private UIHandler(TerminalScreen screen){
-        current = screen;
+        currentScreen = screen;
     }
 
     public void start(){
-        println(current.getDisplay());
+        currentScreen.action();
         char input;
-        while(current.getChoice(input = scanner.nextLine().charAt(0)) != null) {
-
+        while(currentScreen instanceof TerminalScreen){
+            input = scanner.nextLine().charAt(0);
+            TerminalAction action = ((TerminalScreen) currentScreen).getAction(input);
+            if(action != null){
+                currentScreen = action;
+            }
+            currentScreen.action();
         }
     }
 

@@ -6,10 +6,10 @@ public class FileNameScreen implements TerminalScreen {
             "Please specify a directory and filename: \n" +
             DASHED_LINE + "\n";
     @Override
-    public String getDisplay { return message; }
+    public String getDisplay() { return message; }
 
     public static FileNameScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalAction getAction(String s) //TODO a
+    public TerminalChoice getChoice(String s) //TODO a
 }
