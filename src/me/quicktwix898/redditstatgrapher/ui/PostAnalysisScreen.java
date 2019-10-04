@@ -13,7 +13,7 @@ public class PostAnalysisScreen implements TerminalScreen {
 
     public static TerminalScreen getInstance() { return INSTANCE; }
 
-    public TerminalChoice getChoice(char c) {
+    public TerminalChoice getChoice(String c) {
         return PostAnalysisScreenChoice.get(c);
     }
 
@@ -21,10 +21,10 @@ public class PostAnalysisScreen implements TerminalScreen {
         words('w', ),
         upvotes('u', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        PostAnalysisScreenChoice(char character, TerminalScreen screen) {
+        PostAnalysisScreenChoice(String character, TerminalScreen screen) {
             this.character = character;
             this.screen = screen;
         }
@@ -33,7 +33,7 @@ public class PostAnalysisScreen implements TerminalScreen {
         public TerminalScreen getScreen(){ return screen; }
 
         @Override
-        public char getCharacter(){ return character; }
+        public String getString(){ return character; }
 
         public static PostAnalysisScreenChoice get(char c) {
             for(PostAnalysisScreenChoice choice : values()) {

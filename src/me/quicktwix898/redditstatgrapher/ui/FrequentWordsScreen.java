@@ -16,7 +16,7 @@ public class FrequentWordsScreen implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalChoice getChoice(char c)  { return FrequentWordsScreenChoice.get(c); }
+    public TerminalChoice getChoice(String c)  { return FrequentWordsScreenChoice.get(c); }
 
     public enum FrequentWordsScreenChoice implements TerminalChoice {
         wordCloud('w', ),
@@ -34,7 +34,7 @@ public class FrequentWordsScreen implements TerminalScreen {
         public TerminalScreen getScreen() { return screen; }
 
         @Override
-        public char getCharacter() { return character; }
+        public String getString() { return character; }
 
         public static FrequentWordsScreenChoice get(char c) {
             for (FrequentWordsScreenChoice choice : values()) {

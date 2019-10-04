@@ -1,5 +1,8 @@
 package me.quicktwix898.redditstatgrapher.ui;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class UIHandler {
@@ -12,26 +15,25 @@ public class UIHandler {
 
     //instance
     final Scanner scanner = new Scanner(System.in);
-    TerminalAction currentScreen;
+    TerminalAction currentAction;
+    final List<Character> choices = Collections.synchronizedList(new ArrayList<Character>());
 
     private UIHandler(TerminalScreen screen){
-        currentScreen = screen;
+        currentAction = screen;
     }
 
     public void start(){
-        currentScreen.action();
+        currentAction.action();
         char input;
-        while(currentScreen instanceof TerminalScreen){
+        while(currentAction instanceof TerminalScreen){
             input = scanner.nextLine().charAt(0);
-            TerminalAction action = ((TerminalScreen) currentScreen).getAction(input);
-            if(action != null){
-                currentScreen = action;
+            TerminalChoice choice = ((TerminalScreen) currentAction).getChoice(input);
+            choices.add(choice.getString());
+            if(choice != null){
+                currentAction = choice.getScreen();
             }
-            currentScreen.action();
+            currentAction.action();
         }
-    }
-
-    private static void println(String s){
-        System.out.println(s);
+        System.out.println("Executing your query...");
     }
 }

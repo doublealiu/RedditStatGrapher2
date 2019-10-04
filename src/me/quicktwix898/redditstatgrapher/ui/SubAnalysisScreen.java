@@ -14,7 +14,7 @@ public class SubAnalysisScreen implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalChoice getChoice(char c) {
+    public TerminalChoice getChoice(String c) {
         return SubAnalysisScreenChoice.get(c);
     }
 
@@ -22,10 +22,10 @@ public class SubAnalysisScreen implements TerminalScreen {
         words('w', ),
         active('a', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        SubAnalysisScreenChoice(char character, TerminalScreen screen) {
+        SubAnalysisScreenChoice(String character, TerminalScreen screen) {
             this.character = character;
             this.screen = screen;
         }
@@ -33,7 +33,7 @@ public class SubAnalysisScreen implements TerminalScreen {
         public TerminalScreen getScreen() { return screen; }
 
         @Override
-        public char getCharacter() { return character; }
+        public String getString() { return character; }
 
         public static SubAnalysisScreenChoice get(char c) {
             for(SubAnalysisScreenChoice choice : values()) {

@@ -22,7 +22,7 @@ public class MainScreen implements TerminalScreen {
     }
 
     @Override
-    public TerminalChoice getChoice(char c) {
+    public TerminalChoice getChoice(String c) {
         return MainScreenChoice.get(c);
     }
 
@@ -31,16 +31,16 @@ public class MainScreen implements TerminalScreen {
          subreddit('s', ),
         post('p', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        MainScreenChoice(char character, TerminalScreen screen){
+        MainScreenChoice(String character, TerminalScreen screen){
             this.character = character;
             this.screen = screen;
         }
 
         @Override
-        public char getCharacter() {
+        public String getString() {
             return character;
         }
 
