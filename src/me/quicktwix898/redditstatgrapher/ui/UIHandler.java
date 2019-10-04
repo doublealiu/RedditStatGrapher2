@@ -16,23 +16,22 @@ public class UIHandler {
     //instance
     final Scanner scanner = new Scanner(System.in);
     TerminalAction currentAction;
-    final List<Character> choices = Collections.synchronizedList(new ArrayList<Character>());
+    final List<String> choices = Collections.synchronizedList(new ArrayList<>());
 
     private UIHandler(TerminalScreen screen){
         currentAction = screen;
     }
 
     public void start(){
-        currentAction.action();
-        char input;
+        String input;
         while(currentAction instanceof TerminalScreen){
-            input = scanner.nextLine().charAt(0);
+            currentAction.action();
+            input = scanner.nextLine().substring(0, 1);
             TerminalChoice choice = ((TerminalScreen) currentAction).getChoice(input);
-            choices.add(choice.getString());
             if(choice != null){
+                choices.add(choice.getString());
                 currentAction = choice.getScreen();
             }
-            currentAction.action();
         }
         System.out.println("Executing your query...");
     }
