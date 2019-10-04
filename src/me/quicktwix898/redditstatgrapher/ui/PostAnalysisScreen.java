@@ -35,9 +35,9 @@ public class PostAnalysisScreen implements TerminalScreen {
         @Override
         public String getString(){ return character; }
 
-        public static PostAnalysisScreenChoice get(char c) {
+        public static PostAnalysisScreenChoice get(String c) {
             for(PostAnalysisScreenChoice choice : values()) {
-                if (choice.character == c) {
+                if (choice.character.equals(c)) {
                     return choice;
                 }
             }

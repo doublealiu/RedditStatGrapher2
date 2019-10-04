@@ -20,10 +20,10 @@ public class AllSubScreen implements TerminalScreen {
         bar('b', ),
         pie('p', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        AllSubScreenChoice(char character, TerminalScreen screen) {
+        AllSubScreenChoice(String character, TerminalScreen screen) {
             this.character = character;
             this.screen = screen;
         }
@@ -33,9 +33,9 @@ public class AllSubScreen implements TerminalScreen {
         @Override
         public String getString() { return character; }
 
-        public static AllSubScreenChoice get(char c) {
+        public static AllSubScreenChoice get(String c) {
             for(AllSubScreenChoice choice : values()) {
-                if (choice.character == c) {
+                if (choice.character.equals(c)) {
                     return choice;
                 }
             }

@@ -23,10 +23,10 @@ public class FrequentWordsScreen implements TerminalScreen {
         bar('b', ),
         pie('p', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        FrequentWordsScreenChoice(char character, TerminalScreen screen) {
+        FrequentWordsScreenChoice(String character, TerminalScreen screen) {
             this.character = character;
             this.screen = screen;
         }
@@ -36,9 +36,9 @@ public class FrequentWordsScreen implements TerminalScreen {
         @Override
         public String getString() { return character; }
 
-        public static FrequentWordsScreenChoice get(char c) {
+        public static FrequentWordsScreenChoice get(String c) {
             for (FrequentWordsScreenChoice choice : values()) {
-                if (choice.character == c) {
+                if (choice.character.equals(c)) {
                     return choice;
                 }
             }

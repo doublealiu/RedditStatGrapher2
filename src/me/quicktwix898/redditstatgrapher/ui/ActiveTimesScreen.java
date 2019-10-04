@@ -15,16 +15,16 @@ public class ActiveTimesScreen  implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalChoice getChoice(char c) { return ActiveTimesScreenChoice.get(c); }
+    public TerminalChoice getChoice(String c) { return ActiveTimesScreenChoice.get(c); }
 
     public enum ActiveTimesScreenChoice implements TerminalChoice {
         lineChart('l', ),
         histogram('h', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        ActiveTimesScreenChoice(char character, TerminalScreen screen) {
+        ActiveTimesScreenChoice(String character, TerminalScreen screen) {
             this.character = character;
             this.screen = screen;
         }
@@ -33,11 +33,11 @@ public class ActiveTimesScreen  implements TerminalScreen {
         public TerminalScreen getScreen() { return screen; }
 
         @Override
-        public char getCharacter() { return character; }
+        public String getString() { return character; }
 
-        public static ActiveTimesScreenChoice get(char c) {
+        public static ActiveTimesScreenChoice get(String c) {
             for (ActiveTimesScreenChoice choice : values()) {
-                if(choice.character == c) {
+                if(choice.character.equals(c)) {
                     return choice;
                 }
             }

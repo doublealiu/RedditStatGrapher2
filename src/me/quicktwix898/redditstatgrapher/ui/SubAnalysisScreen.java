@@ -35,9 +35,9 @@ public class SubAnalysisScreen implements TerminalScreen {
         @Override
         public String getString() { return character; }
 
-        public static SubAnalysisScreenChoice get(char c) {
+        public static SubAnalysisScreenChoice get(String c) {
             for(SubAnalysisScreenChoice choice : values()) {
-                if(choice.character == c) {
+                if(choice.character.equals(c)) {
                     return choice;
                 }
             }

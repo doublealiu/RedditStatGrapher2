@@ -30,10 +30,10 @@ public class AllAnalysisScreen implements TerminalScreen {
         popularity('p', ),
         active('a', );
 
-        char character;
+        String character;
         TerminalScreen screen;
 
-        AllAnalysisScreenChoice(char character, TerminalScreen screen) {
+        AllAnalysisScreenChoice(String character, TerminalScreen screen) {
             this.character = character;
             this.screen = screen;
         }
@@ -47,9 +47,9 @@ public class AllAnalysisScreen implements TerminalScreen {
             return character;
         }
 
-        public static AllAnalysisScreenChoice get(char c){
+        public static AllAnalysisScreenChoice get(String c){
             for(AllAnalysisScreenChoice choice : values()) {
-                if(choice.character == c){
+                if(choice.character.equals(c)){
                     return choice;
                 }
             }
