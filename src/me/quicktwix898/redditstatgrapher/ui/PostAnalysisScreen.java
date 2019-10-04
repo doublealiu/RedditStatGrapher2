@@ -13,8 +13,8 @@ public class PostAnalysisScreen implements TerminalScreen {
 
     public static TerminalScreen getInstance() { return INSTANCE; }
 
-    public TerminalChoice getChoice(String s) {
-        return PostAnalysisScreenChoice.get(s);
+    public TerminalChoice getChoice(char c) {
+        return PostAnalysisScreenChoice.get(c);
     }
 
     public enum PostAnalysisScreenChoice implements TerminalChoice{

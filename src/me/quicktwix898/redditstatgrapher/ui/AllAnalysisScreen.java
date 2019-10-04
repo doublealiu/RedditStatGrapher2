@@ -22,7 +22,7 @@ public class AllAnalysisScreen implements TerminalScreen {
     }
 
     @Override
-    public TerminalChoice getChoice(String s) { return AllAnalysisScreenChoice.get(s); }
+    public TerminalChoice getChoice(char c) { return AllAnalysisScreenChoice.get(c); }
 
     public enum AllAnalysisScreenChoice implements TerminalChoice {
         subreddit('s', ),

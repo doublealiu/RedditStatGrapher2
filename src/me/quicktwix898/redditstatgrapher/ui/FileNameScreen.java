@@ -11,5 +11,5 @@ public class FileNameScreen implements TerminalScreen {
     public static FileNameScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalChoice getChoice(String s) //TODO a
+    public TerminalChoice getChoice(char c) //TODO a
 }
