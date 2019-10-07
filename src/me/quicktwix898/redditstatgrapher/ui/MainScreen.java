@@ -45,7 +45,7 @@ public class MainScreen implements TerminalScreen {
         }
 
         @Override
-        public TerminalScreen getScreen() {
+        public TerminalScreen getAction() {
             return screen;
         }
 

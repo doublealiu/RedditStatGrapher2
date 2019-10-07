@@ -31,7 +31,7 @@ public class FrequentWordsScreen implements TerminalScreen {
             this.screen = screen;
         }
         @Override
-        public TerminalScreen getScreen() { return screen; }
+        public TerminalScreen getAction() { return screen; }
 
         @Override
         public String getString() { return character; }

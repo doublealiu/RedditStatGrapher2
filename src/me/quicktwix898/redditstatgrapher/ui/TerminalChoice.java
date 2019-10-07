@@ -1,6 +1,6 @@
 package me.quicktwix898.redditstatgrapher.ui;
 
 public interface TerminalChoice {
-    TerminalAction getScreen();
+    TerminalAction getAction();
     String getString();
 }

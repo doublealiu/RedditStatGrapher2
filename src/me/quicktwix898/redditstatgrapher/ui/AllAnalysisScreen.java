@@ -38,7 +38,7 @@ public class AllAnalysisScreen implements TerminalScreen {
             this.screen = screen;
         }
         @Override
-        public TerminalScreen getScreen() {
+        public TerminalScreen getAction() {
             return screen;
         }
 

@@ -30,7 +30,7 @@ public class UIHandler {
             TerminalChoice choice = ((TerminalScreen) currentAction).getChoice(input);
             if(choice != null){
                 choices.add(choice.getString());
-                currentAction = choice.getScreen();
+                currentAction = choice.getAction();
             }
         }
         System.out.println("Executing your query...");
