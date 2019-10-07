@@ -27,9 +27,9 @@ public class MainScreen implements TerminalScreen {
     }
 
     public enum MainScreenChoice implements TerminalChoice {
-        all('a', AllAnalysisScreen.getInstance()),
-         subreddit('s', ),
-        post('p', );
+        all("a", AllAnalysisScreen.getInstance()),
+        subreddit("s", SubAnalysisScreen.getInstance()),
+        post("p", PostAnalysisScreen.getInstance());
 
         String character;
         TerminalScreen screen;
@@ -49,9 +49,9 @@ public class MainScreen implements TerminalScreen {
             return screen;
         }
 
-        public static MainScreenChoice get(char c){
+        public static MainScreenChoice get(String c){
             for(MainScreenChoice choice : values()) {
-                if(choice.character == c){
+                if(choice.character.equals(c)){
                     return choice;
                 }
             }
