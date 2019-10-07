@@ -1,4 +1,9 @@
-package me.quicktwix898.redditstatgrapher.ui;
+package me.quicktwix898.redditstatgrapher;
+
+import me.quicktwix898.redditstatgrapher.ui.MainScreen;
+import me.quicktwix898.redditstatgrapher.ui.TerminalAction;
+import me.quicktwix898.redditstatgrapher.ui.TerminalChoice;
+import me.quicktwix898.redditstatgrapher.ui.TerminalScreen;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,5 +39,9 @@ public class UIHandler {
             }
         }
         System.out.println("Executing your query...");
+    }
+
+    public static void main(String[] args) {
+        INSTANCE.start();
     }
 }
