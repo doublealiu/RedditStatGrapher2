@@ -20,8 +20,8 @@ public class ActiveTimesScreen  implements TerminalScreen {
     public TerminalChoice getChoice(String c) { return ActiveTimesScreenChoice.get(c); }
 
     public enum ActiveTimesScreenChoice implements TerminalChoice {
-        lineChart("l", FileNameScreen.getInstance()),
-        histogram("h", FileNameScreen.getInstance());
+        lineChart("l", PostNumberScreen.getInstance()),
+        histogram("h", PostNumberScreen.getInstance());
 
         String character;
         TerminalScreen screen;

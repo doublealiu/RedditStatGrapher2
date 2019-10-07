@@ -18,10 +18,11 @@ public class FrequentWordsScreen implements TerminalScreen {
     @Override
     public TerminalChoice getChoice(String c)  { return FrequentWordsScreenChoice.get(c); }
 
+    //must be 1 if you are doing a post
     public enum FrequentWordsScreenChoice implements TerminalChoice {
-        wordCloud("w", FileNameScreen.getInstance()),
-        bar("b", FileNameScreen.getInstance()),
-        pie("p", FileNameScreen.getInstance());
+        wordCloud("w", PostNumberScreen.getInstance()),
+        bar("b", PostNumberScreen.getInstance()),
+        pie("p", PostNumberScreen.getInstance());
 
         String character;
         TerminalScreen screen;

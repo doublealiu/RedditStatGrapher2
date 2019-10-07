@@ -18,7 +18,7 @@ public class AllSubPopularityScreen implements TerminalScreen {
     public TerminalChoice getChoice(String c) { return AllSubPopularityScreenChoice.get(c); }
 
     public enum AllSubPopularityScreenChoice implements  TerminalChoice {
-        line("l", FileNameScreen.getInstance());
+        line("l", PostNumberScreen.getInstance());
 
         String character;
         TerminalScreen screen;

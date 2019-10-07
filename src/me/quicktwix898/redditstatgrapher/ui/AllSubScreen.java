@@ -17,8 +17,8 @@ public class AllSubScreen implements TerminalScreen {
     public TerminalChoice getChoice(String c) { return AllSubScreenChoice.get(c); }
 
     public enum AllSubScreenChoice implements TerminalChoice{
-        bar("b", FileNameScreen.getInstance()),
-        pie("p", FileNameScreen.getInstance());
+        bar("b", PostNumberScreen.getInstance()),
+        pie("p", PostNumberScreen.getInstance());
 
         String character;
         TerminalScreen screen;

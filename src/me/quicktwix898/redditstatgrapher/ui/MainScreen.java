@@ -28,8 +28,8 @@ public class MainScreen implements TerminalScreen {
 
     public enum MainScreenChoice implements TerminalChoice {
         all("a", AllAnalysisScreen.getInstance()),
-        subreddit("s", SubAnalysisScreen.getInstance()),
-        post("p", PostAnalysisScreen.getInstance());
+        subreddit("s", SubNameScreen.getInstance()),
+        post("p", PostIDScreen.getInstance());
 
         String character;
         TerminalScreen screen;
