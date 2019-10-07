@@ -1,5 +1,7 @@
 package me.quicktwix898.redditstatgrapher.ui;
 
+import java.io.File;
+
 public class ActiveTimesScreen  implements TerminalScreen {
     final static ActiveTimesScreen INSTANCE = new ActiveTimesScreen();
 
@@ -18,8 +20,8 @@ public class ActiveTimesScreen  implements TerminalScreen {
     public TerminalChoice getChoice(String c) { return ActiveTimesScreenChoice.get(c); }
 
     public enum ActiveTimesScreenChoice implements TerminalChoice {
-        lineChart('l', ),
-        histogram('h', );
+        lineChart("l", FileNameScreen.getInstance()),
+        histogram("h", FileNameScreen.getInstance());
 
         String character;
         TerminalScreen screen;

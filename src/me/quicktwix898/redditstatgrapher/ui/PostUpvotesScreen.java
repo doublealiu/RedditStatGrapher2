@@ -10,7 +10,7 @@ public class PostUpvotesScreen implements TerminalScreen {
     @Override
     public String getDisplay() { return message; }
 
-    public TerminalScreen getInstance() { return INSTANCE; }
+    public static TerminalScreen getInstance() { return INSTANCE; }
 
     public TerminalChoice getChoice(String c) {
         return PostUpvotesScreenChoice.get(c);

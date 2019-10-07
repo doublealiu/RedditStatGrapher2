@@ -25,10 +25,10 @@ public class AllAnalysisScreen implements TerminalScreen {
     public TerminalChoice getChoice(String c) { return AllAnalysisScreenChoice.get(c); }
 
     public enum AllAnalysisScreenChoice implements TerminalChoice {
-        subreddit('s', ),
-        words('w', ),
-        popularity('p', ),
-        active('a', );
+        subreddit("s", AllSubScreen.getInstance()),
+        words("w", FrequentWordsScreen.getInstance()),
+        popularity("p", AllSubPopularityScreen.getInstance()),
+        active("a", ActiveTimesScreen.getInstance());
 
         String character;
         TerminalScreen screen;

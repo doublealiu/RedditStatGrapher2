@@ -19,8 +19,8 @@ public class SubAnalysisScreen implements TerminalScreen {
     }
 
     public enum SubAnalysisScreenChoice implements TerminalChoice{
-        words('w', ),
-        active('a', );
+        words("w", FrequentWordsScreen.getInstance()),
+        active("a", ActiveTimesScreen.getInstance());
 
         String character;
         TerminalScreen screen;

@@ -19,9 +19,9 @@ public class FrequentWordsScreen implements TerminalScreen {
     public TerminalChoice getChoice(String c)  { return FrequentWordsScreenChoice.get(c); }
 
     public enum FrequentWordsScreenChoice implements TerminalChoice {
-        wordCloud('w', ),
-        bar('b', ),
-        pie('p', );
+        wordCloud("w", FileNameScreen.getInstance()),
+        bar("b", FileNameScreen.getInstance()),
+        pie("p", FileNameScreen.getInstance());
 
         String character;
         TerminalScreen screen;
