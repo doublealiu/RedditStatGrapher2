@@ -17,7 +17,7 @@ public class PostUpvotesScreen implements TerminalScreen {
     }
 
     public enum PostUpvotesScreenChoice implements TerminalChoice {
-        line('l', );
+        line("l", FileNameScreen.getInstance());
 
         String character;
         TerminalScreen screen;

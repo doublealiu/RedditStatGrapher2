@@ -24,7 +24,7 @@ public class UIHandler {
 
     public void start(){
         String input;
-        while(currentAction instanceof TerminalScreen){
+        while(currentAction != null && currentAction instanceof TerminalScreen){
             currentAction.action();
             input = scanner.nextLine().substring(0, 1);
             TerminalChoice choice = ((TerminalScreen) currentAction).getChoice(input);

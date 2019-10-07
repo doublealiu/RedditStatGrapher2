@@ -25,12 +25,12 @@ public class FileNameScreen implements TerminalScreen {
 
         @Override
         public TerminalAction getAction(){
-
+            return null;
         }
 
         @Override
         public String getString(){
-
+            return path;
         }
     }
 }
