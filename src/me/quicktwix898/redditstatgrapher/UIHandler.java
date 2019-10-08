@@ -37,11 +37,15 @@ public class UIHandler {
             if(choice != null){
                 choices.add(choice.getString());
                 currentAction = choice.getAction();
+                currentAction.action();
             }else{
                 System.out.println(((TerminalScreen) currentAction).error());
             }
         }
         System.out.println("Executing your query...");
+        for(String str : choices){
+            System.out.println(str);
+        }
     }
 
     public static void main(String[] args) {

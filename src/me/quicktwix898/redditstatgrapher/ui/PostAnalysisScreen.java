@@ -18,7 +18,7 @@ public class PostAnalysisScreen implements TerminalScreen {
     }
 
     public enum PostAnalysisScreenChoice implements TerminalChoice{
-        words("w", FrequentWordsScreen.getInstance()),
+        words("w", FrequentWordsPostScreen.getInstance()),
         upvotes("u", PostUpvotesScreen.getInstance());
 
         String character;
