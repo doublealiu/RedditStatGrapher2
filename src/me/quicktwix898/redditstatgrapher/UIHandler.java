@@ -29,14 +29,16 @@ public class UIHandler {
 
     public void start(){
         String input;
+        currentAction.action();
         while(currentAction != null && currentAction instanceof TerminalScreen){
-            currentAction.action();
             String temp = scanner.nextLine();
             input = temp.length() < 1 ? "" : temp.substring(0, 1);
             TerminalChoice choice = ((TerminalScreen) currentAction).getChoice(input);
             if(choice != null){
                 choices.add(choice.getString());
                 currentAction = choice.getAction();
+            }else{
+                System.out.println(((TerminalScreen) currentAction).error());
             }
         }
         System.out.println("Executing your query...");

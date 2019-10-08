@@ -7,6 +7,10 @@ public interface TerminalScreen extends TerminalAction {
 
     TerminalChoice getChoice(String c);
 
+    default String error(){
+        return getDisplay();
+    }
+
     @Override
     default void action() {
         System.out.println(this.getDisplay());
