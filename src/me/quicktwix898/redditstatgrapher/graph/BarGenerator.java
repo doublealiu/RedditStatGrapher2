@@ -4,8 +4,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
@@ -13,19 +13,19 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-class PieGenerator extends ApplicationFrame implements GraphGenerator {
+public class BarGenerator extends ApplicationFrame implements GraphGenerator {
     private JFreeChart chart;
-
-    public PieGenerator(String title, Map<String, Integer> data) {
+    public BarGenerator(String title, Map<String, Integer> data) {
         super(WIN_TITLE);
-        chart = ChartFactory.createPieChart(title, createDataset(data),
-                false, true, false);
+        chart = ChartFactory.createBarChart(title, "", "Occurances",
+                createDataset(data));
     }
 
-    private static PieDataset createDataset(Map<String, Integer> map) {
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        for (String name : map.keySet()) {
-            dataset.setValue(name, new Double(map.get(name)));
+    private static CategoryDataset createDataset(Map<String, Integer> map) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        final String defaultCategory = "Default";
+        for(String name : map.keySet()) {
+            dataset.setValue(new Double(map.get(name)), defaultCategory, name);
         }
         return dataset;
     }
@@ -41,8 +41,8 @@ class PieGenerator extends ApplicationFrame implements GraphGenerator {
     @Override
     public void save(String filename) {
         try {
-            File pieChart = new File(filename);
-            ChartUtils.saveChartAsJPEG(pieChart, chart, WIN_WIDTH, WIN_HEIGHT);
+            File barChart = new File(filename);
+            ChartUtils.saveChartAsJPEG(barChart, chart, WIN_WIDTH, WIN_HEIGHT);
         } catch (Exception e) {
             System.out.println("Error saving file: " + e);
         }
@@ -53,8 +53,11 @@ class PieGenerator extends ApplicationFrame implements GraphGenerator {
         HashMap<String, Integer> test = new HashMap<String, Integer>();
         test.put("Test", 100);
         test.put("2", 200);
+        test.put("Aaron", 50);
+        test.put("Me", 300);
+        test.put("Yeet", 90);
 
-        PieGenerator demo = new PieGenerator("Fancy Analysis", test);
+        BarGenerator demo = new BarGenerator("Fancy Analysis", test);
         demo.openWindow();
     }
 }
