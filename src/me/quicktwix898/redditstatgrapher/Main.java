@@ -2,7 +2,6 @@ package me.quicktwix898.redditstatgrapher;
 
 import java.util.List;
 
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class Main {
