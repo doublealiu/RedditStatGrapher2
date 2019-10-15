@@ -28,7 +28,7 @@ public class PostNumberScreen implements TerminalScreen {
     @Override
     public PostNumber getChoice(String str){
         try{
-            int i = Integer.parseInt(str);
+            Integer i = Integer.parseInt(str);
             return new PostNumber(i);
         } catch(NumberFormatException e){
             return null;
@@ -41,7 +41,7 @@ public class PostNumberScreen implements TerminalScreen {
     }
 
     public static class PostNumber implements TerminalChoice {
-        int number;
+        Integer number;
 
         private PostNumber(int i){
             number = i;
@@ -53,8 +53,8 @@ public class PostNumberScreen implements TerminalScreen {
         }
 
         @Override
-        public String getString(){
-            return "" + number;
+        public Integer getString(){
+            return number;
         }
     }
 }

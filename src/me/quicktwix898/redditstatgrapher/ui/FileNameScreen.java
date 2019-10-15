@@ -45,7 +45,7 @@ public class FileNameScreen implements TerminalScreen {
         }
 
         @Override
-        public TerminalAction getAction(){
+        public TerminalAction getAction() {
             return null;
         }
 

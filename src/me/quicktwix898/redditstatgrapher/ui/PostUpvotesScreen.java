@@ -5,7 +5,8 @@ public class PostUpvotesScreen implements TerminalScreen {
 
     final String message = DASHED_LINE + "\n" +
             "Please choose a type of graph \n" +
-            "l: line graph + \n";
+            "l: line graph\n" +
+            DASHED_LINE;
 
     @Override
     public String getDisplay() { return message; }

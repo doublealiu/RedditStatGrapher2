@@ -1,9 +1,6 @@
 package me.quicktwix898.redditstatgrapher;
 
-import me.quicktwix898.redditstatgrapher.ui.MainScreen;
-import me.quicktwix898.redditstatgrapher.ui.TerminalAction;
-import me.quicktwix898.redditstatgrapher.ui.TerminalChoice;
-import me.quicktwix898.redditstatgrapher.ui.TerminalScreen;
+import me.quicktwix898.redditstatgrapher.ui.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,13 +18,13 @@ public class UIHandler {
     //instance
     final Scanner scanner = new Scanner(System.in);
     TerminalAction currentAction;
-    final List<String> choices = Collections.synchronizedList(new ArrayList<>());
+    final List<Object> choices = Collections.synchronizedList(new ArrayList<>());
 
     private UIHandler(TerminalScreen screen){
         currentAction = screen;
     }
 
-    public void start(){
+    public List<Object> start(){
         String input;
         currentAction.action();
         while(currentAction != null && currentAction instanceof TerminalScreen){
@@ -37,18 +34,19 @@ public class UIHandler {
             if(choice != null){
                 choices.add(choice.getString());
                 currentAction = choice.getAction();
+                if(currentAction == null){
+                    break;
+                }
                 currentAction.action();
             }else{
-                System.out.println(((TerminalScreen) currentAction).error());
+                if(currentAction instanceof FileNameScreen){
+                    choices.add("");
+                    break;
+                }else {
+                    System.out.println(((TerminalScreen) currentAction).error());
+                }
             }
         }
-        System.out.println("Executing your query...");
-        for(String str : choices){
-            System.out.println(str);
-        }
-    }
-
-    public static void main(String[] args) {
-        INSTANCE.start();
+        return choices;
     }
 }

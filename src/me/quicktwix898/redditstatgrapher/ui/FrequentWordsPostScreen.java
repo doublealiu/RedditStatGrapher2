@@ -16,7 +16,7 @@ public class FrequentWordsPostScreen implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalChoice getChoice(String c)  { return FrequentWordsScreen.FrequentWordsScreenChoice.get(c); }
+    public TerminalChoice getChoice(String c)  { return FrequentWordsPostScreen.FrequentWordsScreenChoice.get(c); }
 
     //must be 1 if you are doing a post
     public enum FrequentWordsScreenChoice implements TerminalChoice {

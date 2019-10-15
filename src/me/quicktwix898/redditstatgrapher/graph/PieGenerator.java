@@ -34,11 +34,4 @@ class PieGenerator extends ApplicationFrame {
         }
         return dataset;
     }
-
-    public static void main(String[] args) {
-        PieGenerator demo = new PieGenerator("RedditStat");
-        demo.setSize(560 , 367);
-        RefineryUtilities.centerFrameOnScreen(demo);
-        demo.setVisible(true);
-    }
 }
