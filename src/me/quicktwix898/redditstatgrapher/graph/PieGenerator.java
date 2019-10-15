@@ -29,8 +29,6 @@ class PieGenerator extends ApplicationFrame implements GraphGenerator {
         }
         return dataset;
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public void openWindow() {
@@ -59,5 +57,4 @@ class PieGenerator extends ApplicationFrame implements GraphGenerator {
         PieGenerator demo = new PieGenerator("Fancy Analysis", test);
         demo.openWindow();
     }
->>>>>>> 2c78e4a151b34716760d3dbfa9a4f6834ccb8be9
 }

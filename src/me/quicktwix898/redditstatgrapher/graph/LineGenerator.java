@@ -59,7 +59,6 @@ public class LineGenerator extends ApplicationFrame implements GraphGenerator {
         test.put("2011", 50);
         test.put("2010", 300);
         test.put("2009", 90);
-        //TODO somehow sort list into correct order
 
         LineGenerator lg = new LineGenerator("cool title", test);
         lg.openWindow();
