@@ -16,7 +16,7 @@ public class FrequentWordsPostScreen implements TerminalScreen {
     public static TerminalScreen getInstance() { return INSTANCE; }
 
     @Override
-    public TerminalChoice getChoice(String c)  { return FrequentWordsPostScreen.FrequentWordsScreenChoice.get(c); }
+    public TerminalChoice getChoice(String c)  { return FrequentWordsScreenChoice.get(c); }
 
     //must be 1 if you are doing a post
     public enum FrequentWordsScreenChoice implements TerminalChoice {
@@ -36,8 +36,8 @@ public class FrequentWordsPostScreen implements TerminalScreen {
         @Override
         public String getString() { return character; }
 
-        public static FrequentWordsPostScreen.FrequentWordsScreenChoice get(String c) {
-            for (FrequentWordsPostScreen.FrequentWordsScreenChoice choice : values()) {
+        public static FrequentWordsScreenChoice get(String c) {
+            for (FrequentWordsScreenChoice choice : values()) {
                 if (choice.character.equals(c)) {
                     return choice;
                 }

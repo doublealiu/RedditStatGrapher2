@@ -2,3 +2,8 @@
 RedditStatGrapher.iml
 out/
 src/me/quicktwix898/redditstatgrapher/Test.java
+gradle
+gradlew
+.gradle
+settings.gradle
+gradlew.bat
