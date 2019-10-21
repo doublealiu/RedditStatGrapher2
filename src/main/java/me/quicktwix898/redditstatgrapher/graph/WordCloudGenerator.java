@@ -57,8 +57,8 @@ public class WordCloudGenerator extends JFrame implements GraphGenerator {
         frequencyAnalyzer.setMinWordLength(MIN_CHAR_LENGTH);
         final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(input);
         List<List<WordFrequency>> result = new ArrayList<>();
-        result.add(new ArrayList<WordFrequency>());
-        result.add(new ArrayList<WordFrequency>());
+        result.add(new ArrayList<>());
+        result.add(new ArrayList<>());
         for(int i = 0; i < wordFrequencies.size(); i++){
             if(i % 2 == 0){
                 result.get(0).add(wordFrequencies.get(i));
