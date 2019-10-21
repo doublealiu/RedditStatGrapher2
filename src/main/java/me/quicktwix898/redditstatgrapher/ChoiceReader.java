@@ -29,21 +29,80 @@ public class ChoiceReader {
                             case('b'): { //bar chart
                                 return new SubsInAllAnalysis(GraphType.BAR, filePath);
                             } case('p'):{ // pie chart
-
+                                return new SubsInAllAnalysis(GraphType.PIE, filePath);
                             }
                         }
                     } case('w'): {
-
+                        switch(third.charAt(0)) {
+                            case('w'): {
+                                // word analysis with word cloud
+                            } case('b'): {
+                                // word analysis with bar chart
+                            } case('p'): {
+                                // word analysis with pie chart
+                            }
+                        }
                     } case('p'): {
-
+                        switch (third.charAt(0)) {
+                            case('l'): {
+                                // subreddit popularity over time in line chart
+                            }
+                        }
                     } case('a'): {
-
+                        switch(third.charAt(0)) {
+                            case('l'): {
+                                // frequently active times in r/all in line chart
+                            }
+                            case('h'): {
+                                // histogram frequently active times over 24h
+                            }
+                        }
                     }
                 }
             } case('s'): {
-
+                switch(second.charAt(0)){
+                    case('w'): {
+                        switch(third.charAt(0)) {
+                            case('w'): {
+                                //frequently used words in subreddit word cloud
+                            } case('p'): {
+                                //frequently used words in subreddit pie chart
+                            } case('b'): {
+                                //frequently used words in subreddit baR CHART
+                            }
+                        }
+                    } case('a'): {
+                        switch (third.charAt(0)) {
+                            case('l'): {
+                                //frequently active times line chart
+                            } case('h'): {
+                                // frequently active times historgram (over 24h)
+                            }
+                        }
+                    }
+                }
             } case('p'): {
-
+                switch(second.charAt(0)) {
+                    case('w'): {
+                        switch(third.charAt(0)) {
+                            case('w'): {
+                                // frequently used words in post word cloud
+                            }
+                            case('b'): {
+                                // frequently used words bar chart
+                            }
+                            case('p'): {
+                                //frequently used words pie chart
+                            }
+                        }
+                    } case('u'): {
+                        switch(third.charAt(0)) {
+                            case('l'): {
+                                // upvotes over time in post line chart
+                            }
+                        }
+                    }
+                }
             }
         }
         return null;
