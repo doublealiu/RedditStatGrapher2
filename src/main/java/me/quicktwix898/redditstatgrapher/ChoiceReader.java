@@ -27,12 +27,8 @@ public class ChoiceReader {
                     case('s'): { //subs in all
                         switch(third.charAt(0)){
                             case('b'): { //bar chart
-<<<<<<< HEAD
                                 return new SubsInAllAnalysis(GraphType.BAR, filePath, ds);
-=======
-                                System.out.println("subs in all bar graph");
                                 //return new SubsInAllAnalysis(GraphType.BAR, filePath);
->>>>>>> bab535ed88bc626c0be3128edaacd187ec9b8007
                             } case('p'):{ // pie chart
                                 System.out.println("subs in all pie graph");
                                 //return new SubsInAllAnalysis(GraphType.PIE, filePath);

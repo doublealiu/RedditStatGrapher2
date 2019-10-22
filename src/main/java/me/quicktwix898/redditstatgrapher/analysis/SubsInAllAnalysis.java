@@ -50,12 +50,25 @@ public class SubsInAllAnalysis implements AnalysisAction {
         if(type == GraphType.BAR){
             gen = new BarGenerator(GRAPH_TITLE, map);
         }else if(type == GraphType.PIE){
-            gen = new PieGenerator();
+            gen = new PieGenerator(GRAPH_TITLE, map);
+        }else{
+            return;
         }
+        if(file.equals(""))
+            return;
+        gen.save(file);
     }
 
     @Override
     public void graph(){
-
+        GraphGenerator gen;
+        if(type == GraphType.BAR){
+            gen = new BarGenerator(GRAPH_TITLE, map);
+        }else if(type == GraphType.PIE){
+            gen = new PieGenerator(GRAPH_TITLE, map);
+        }else{
+            return;
+        }
+        gen.openWindow();
     }
 }
