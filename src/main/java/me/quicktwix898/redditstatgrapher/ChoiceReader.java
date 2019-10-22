@@ -27,7 +27,7 @@ public class ChoiceReader {
                     case('s'): { //subs in all
                         switch(third.charAt(0)){
                             case('b'): { //bar chart
-                                return new SubsInAllAnalysis(GraphType.BAR, filePath);
+                                return new SubsInAllAnalysis(GraphType.BAR, filePath, ds);
                             } case('p'):{ // pie chart
 
                             }

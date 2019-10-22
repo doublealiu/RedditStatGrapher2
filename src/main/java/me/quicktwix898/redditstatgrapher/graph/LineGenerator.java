@@ -50,17 +50,4 @@ public class LineGenerator extends ApplicationFrame implements GraphGenerator {
             System.out.println("Error saving file: " + e);
         }
     }
-
-    //DEMO
-    public static void main(String[] args) {
-        SortedMap<String, Integer> test = new TreeMap();
-        test.put("2013", 100);
-        test.put("2012", 200);
-        test.put("2011", 50);
-        test.put("2010", 300);
-        test.put("2009", 90);
-
-        LineGenerator lg = new LineGenerator("cool title", test);
-        lg.openWindow();
-    }
 }

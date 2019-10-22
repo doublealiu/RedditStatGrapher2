@@ -47,17 +47,4 @@ public class BarGenerator extends ApplicationFrame implements GraphGenerator {
             System.out.println("Error saving file: " + e);
         }
     }
-
-    //DEMO
-    public static void main(String[] args) {
-        HashMap<String, Integer> test = new HashMap<String, Integer>();
-        test.put("Test", 100);
-        test.put("2", 200);
-        test.put("Aaron", 50);
-        test.put("Me", 300);
-        test.put("Yeet", 90);
-
-        BarGenerator demo = new BarGenerator("Fancy Analysis", test);
-        demo.openWindow();
-    }
 }

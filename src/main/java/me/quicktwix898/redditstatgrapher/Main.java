@@ -11,5 +11,7 @@ public class Main {
         HikariDataSource ds = SQLUIHandler.start();
         List<Object> choices = UIHandler.getInstance().start();
         AnalysisAction analysis = new ChoiceReader(choices, ds).get();
+        analysis.graph();
+        analysis.save();
     }
 }

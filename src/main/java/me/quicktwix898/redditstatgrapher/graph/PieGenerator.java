@@ -13,7 +13,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-class PieGenerator extends ApplicationFrame implements GraphGenerator {
+public class PieGenerator extends ApplicationFrame implements GraphGenerator {
     private JFreeChart chart;
 
     public PieGenerator(String title, Map<String, Integer> data) {
@@ -46,15 +46,5 @@ class PieGenerator extends ApplicationFrame implements GraphGenerator {
         } catch (Exception e) {
             System.out.println("Error saving file: " + e);
         }
-    }
-
-    //DEMO
-    public static void main(String[] args) {
-        HashMap<String, Integer> test = new HashMap<String, Integer>();
-        test.put("Test", 100);
-        test.put("2", 200);
-
-        PieGenerator demo = new PieGenerator("Fancy Analysis", test);
-        demo.openWindow();
     }
 }

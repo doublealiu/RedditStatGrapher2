@@ -49,12 +49,4 @@ public class HistogramGenerator extends ApplicationFrame implements GraphGenerat
             System.out.println("Error saving file: " + e);
         }
     }
-
-    //DEMO
-    public static void main(String[] args) {
-        double[] test = {1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.3, 3.4, 3.5};
-
-        HistogramGenerator hg = new HistogramGenerator("cool title", test);
-        hg.openWindow();
-    }
 }
