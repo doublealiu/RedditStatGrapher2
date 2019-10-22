@@ -8,7 +8,7 @@ import me.quicktwix898.redditstatgrapher.analysis.AnalysisAction;
 public class Main {
 
     public static void main(String[] args){
-        HikariDataSource ds = SQLUIHandler.start();
+        HikariDataSource ds = null; //SQLUIHandler.start();
         List<Object> choices = UIHandler.getInstance().start();
         AnalysisAction analysis = new ChoiceReader(choices, ds).get();
     }

@@ -27,18 +27,23 @@ public class ChoiceReader {
                     case('s'): { //subs in all
                         switch(third.charAt(0)){
                             case('b'): { //bar chart
-                                return new SubsInAllAnalysis(GraphType.BAR, filePath);
+                                System.out.println("subs in all bar graph");
+                                //return new SubsInAllAnalysis(GraphType.BAR, filePath);
                             } case('p'):{ // pie chart
-                                return new SubsInAllAnalysis(GraphType.PIE, filePath);
+                                System.out.println("subs in all pie graph");
+                                //return new SubsInAllAnalysis(GraphType.PIE, filePath);
                             }
                         }
                     } case('w'): {
                         switch(third.charAt(0)) {
                             case('w'): {
-                                // word analysis with word cloud
+                                System.out.println("word analysis word cloud");
+                                // word analysis in all with word cloud
                             } case('b'): {
+                                System.out.println("worl");
                                 // word analysis with bar chart
                             } case('p'): {
+                                System.out.println("subs in all bar graph");
                                 // word analysis with pie chart
                             }
                         }
@@ -60,9 +65,11 @@ public class ChoiceReader {
                     }
                 }
             } case('s'): {
-                switch(second.charAt(0)){
+                String fourth = ((String)choices.get(3)).toLowerCase();
+                String filePath = (String)choices.get(4);
+                switch(third.charAt(0)){
                     case('w'): {
-                        switch(third.charAt(0)) {
+                        switch(fourth.charAt(0)) {
                             case('w'): {
                                 //frequently used words in subreddit word cloud
                             } case('p'): {
@@ -72,7 +79,7 @@ public class ChoiceReader {
                             }
                         }
                     } case('a'): {
-                        switch (third.charAt(0)) {
+                        switch (fourth.charAt(0)) {
                             case('l'): {
                                 //frequently active times line chart
                             } case('h'): {
