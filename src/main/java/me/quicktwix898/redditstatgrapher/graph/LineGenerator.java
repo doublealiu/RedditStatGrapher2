@@ -12,7 +12,6 @@ import org.jfree.ui.RefineryUtilities;
 
 import java.io.File;
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 public class LineGenerator extends ApplicationFrame implements GraphGenerator {
     private JFreeChart chart;

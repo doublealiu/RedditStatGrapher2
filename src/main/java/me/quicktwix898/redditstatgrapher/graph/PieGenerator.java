@@ -10,7 +10,6 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 
 public class PieGenerator extends ApplicationFrame implements GraphGenerator {
@@ -23,9 +22,14 @@ public class PieGenerator extends ApplicationFrame implements GraphGenerator {
     }
 
     private static PieDataset createDataset(Map<String, Integer> map) {
+        Map<String, Integer> sorted = GraphGenerator.sortByValue(map);
         DefaultPieDataset dataset = new DefaultPieDataset();
-        for (String name : map.keySet()) {
-            dataset.setValue(name, new Double(map.get(name)));
+        int i=0;
+        for (String name : sorted.keySet()) {
+            if(i<MAX_CATEGORY_ENTRIES) {
+                dataset.setValue(name, new Double(map.get(name)));
+            }
+            i++;
         }
         return dataset;
     }

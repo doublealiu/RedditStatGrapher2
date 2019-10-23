@@ -10,7 +10,6 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 
 public class BarGenerator extends ApplicationFrame implements GraphGenerator {
@@ -22,10 +21,15 @@ public class BarGenerator extends ApplicationFrame implements GraphGenerator {
     }
 
     private static CategoryDataset createDataset(Map<String, Integer> map) {
+        Map<String, Integer> sorted = GraphGenerator.sortByValue(map);
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         final String defaultCategory = "Default";
-        for(String name : map.keySet()) {
-            dataset.setValue(new Double(map.get(name)), defaultCategory, name);
+        int i=0;
+        for(String name : sorted.keySet()) {
+            if (i < MAX_CATEGORY_ENTRIES) {
+                dataset.setValue(new Double(map.get(name)), defaultCategory, name);
+            }
+            i++;
         }
         return dataset;
     }
