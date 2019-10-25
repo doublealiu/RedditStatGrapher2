@@ -1,6 +1,5 @@
 package me.quicktwix898.redditstatgrapher.ui.sql;
 
-import me.quicktwix898.redditstatgrapher.ui.TerminalChoice;
 import me.quicktwix898.redditstatgrapher.ui.TerminalScreen;
 
 public class SQLURLScreen implements TerminalScreen {

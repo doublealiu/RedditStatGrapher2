@@ -1,10 +1,8 @@
 package me.quicktwix898.redditstatgrapher;
 
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.pool.HikariPool;
-import me.quicktwix898.redditstatgrapher.ui.TerminalScreen;
 import me.quicktwix898.redditstatgrapher.ui.sql.SQLPasswordScreen;
 import me.quicktwix898.redditstatgrapher.ui.sql.SQLURLScreen;
 import me.quicktwix898.redditstatgrapher.ui.sql.SQLUsernameScreen;

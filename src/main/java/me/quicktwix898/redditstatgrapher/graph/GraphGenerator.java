@@ -11,10 +11,10 @@ public interface GraphGenerator {
     int WIN_HEIGHT = 367;
     int MAX_CATEGORY_ENTRIES = 15;
 
-    public void openWindow();
-    public void save(String filename);
+    void openWindow();
+    void save(String filename);
 
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+    static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         LinkedHashMap<K, V> reverse = new LinkedHashMap<>();
         map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEachOrdered(x -> reverse.put(x.getKey(), x.getValue()));
         return reverse;
