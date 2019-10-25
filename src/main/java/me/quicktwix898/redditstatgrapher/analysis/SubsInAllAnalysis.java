@@ -13,32 +13,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SubsInAllAnalysis implements AnalysisAction {
-    private static final int MAX_POSTS = 5000;
     private static final String GRAPH_TITLE = "Subreddits in r/all";
 
     GraphType type;
     String file;
     HikariDataSource ds;
-    Map<String, Integer> map;
+    final Map<String, Integer> map = new HashMap<>();
+    GraphGenerator gen;
 
     public SubsInAllAnalysis(GraphType type, String file, HikariDataSource ds){
         this.type = type;
         this.file = file;
         this.ds = ds;
-        this.query();
+        query();
     }
 
     @Override
     public void query(){
         try{
-            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT " + MAX_POSTS);
+            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT " + MAX_POSTS + ";");
             ResultSet result = statement.executeQuery();
-            Map<String, Integer> map = new HashMap<>();
             while(result.next()){
                 String str = result.getString("subreddit");
                 map.merge(str, 1, Integer::sum);
             }
-            this.map = map;
+            if(type == GraphType.BAR){
+                gen = new BarGenerator(GRAPH_TITLE, map);
+            }else if(type == GraphType.PIE){
+                gen = new PieGenerator(GRAPH_TITLE, map);
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -46,14 +49,6 @@ public class SubsInAllAnalysis implements AnalysisAction {
 
     @Override
     public void save(){
-        GraphGenerator gen;
-        if(type == GraphType.BAR){
-            gen = new BarGenerator(GRAPH_TITLE, map);
-        }else if(type == GraphType.PIE){
-            gen = new PieGenerator(GRAPH_TITLE, map);
-        }else{
-            return;
-        }
         if(file.equals(""))
             return;
         gen.save(file);
@@ -61,14 +56,6 @@ public class SubsInAllAnalysis implements AnalysisAction {
 
     @Override
     public void graph(){
-        GraphGenerator gen;
-        if(type == GraphType.BAR){
-            gen = new BarGenerator(GRAPH_TITLE, map);
-        }else if(type == GraphType.PIE){
-            gen = new PieGenerator(GRAPH_TITLE, map);
-        }else{
-            return;
-        }
         gen.openWindow();
     }
 }

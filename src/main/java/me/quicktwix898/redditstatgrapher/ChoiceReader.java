@@ -2,6 +2,8 @@ package me.quicktwix898.redditstatgrapher;
 
 import com.zaxxer.hikari.HikariDataSource;
 import me.quicktwix898.redditstatgrapher.analysis.AnalysisAction;
+import me.quicktwix898.redditstatgrapher.analysis.AnalysisScope;
+import me.quicktwix898.redditstatgrapher.analysis.FrequentWordsAnalysis;
 import me.quicktwix898.redditstatgrapher.analysis.SubsInAllAnalysis;
 import me.quicktwix898.redditstatgrapher.graph.GraphType;
 
@@ -31,14 +33,13 @@ public class ChoiceReader {
                                 //return new SubsInAllAnalysis(GraphType.BAR, filePath);
                             } case('p'):{ // pie chart
                                 System.out.println("subs in all pie graph");
-                                //return new SubsInAllAnalysis(GraphType.PIE, filePath);
+                                return new SubsInAllAnalysis(GraphType.PIE, filePath, ds);
                             }
                         }
                     } case('w'): {
                         switch(third.charAt(0)) {
                             case('w'): {
-                                System.out.println("word analysis word cloud");
-                                // word analysis in all with word cloud
+                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.ALL);
                             } case('b'): {
                                 System.out.println("worl");
                                 // word analysis with bar chart
