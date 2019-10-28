@@ -1,8 +1,5 @@
 package me.quicktwix898.redditstatgrapher.graph;
 
-
-import org.jfree.chart.JFreeChart;
-
 import java.util.*;
 
 public interface GraphGenerator {

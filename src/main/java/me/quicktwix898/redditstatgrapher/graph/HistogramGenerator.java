@@ -28,7 +28,7 @@ public class HistogramGenerator extends ApplicationFrame implements GraphGenerat
         final int STEP = 24;
         HistogramDataset dataset = new HistogramDataset();
         dataset.setType(HistogramType.RELATIVE_FREQUENCY);
-        dataset.addSeries("LOLOO", data, STEP);
+        dataset.addSeries("DEFAULT", data, STEP);
         return dataset;
     }
 
