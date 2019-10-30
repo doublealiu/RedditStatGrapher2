@@ -1,10 +1,7 @@
 package me.quicktwix898.redditstatgrapher;
 
 import com.zaxxer.hikari.HikariDataSource;
-import me.quicktwix898.redditstatgrapher.analysis.AnalysisAction;
-import me.quicktwix898.redditstatgrapher.analysis.AnalysisScope;
-import me.quicktwix898.redditstatgrapher.analysis.FrequentWordsAnalysis;
-import me.quicktwix898.redditstatgrapher.analysis.SubsInAllAnalysis;
+import me.quicktwix898.redditstatgrapher.analysis.*;
 import me.quicktwix898.redditstatgrapher.graph.GraphType;
 
 import java.util.List;
@@ -30,7 +27,6 @@ public class ChoiceReader {
                         switch(third.charAt(0)){
                             case('b'): { //bar chart
                                 return new SubsInAllAnalysis(GraphType.BAR, filePath, ds);
-                                //return new SubsInAllAnalysis(GraphType.BAR, filePath);
                             } case('p'):{ // pie chart
                                 System.out.println("subs in all pie graph");
                                 return new SubsInAllAnalysis(GraphType.PIE, filePath, ds);
@@ -41,11 +37,9 @@ public class ChoiceReader {
                             case('w'): {
                                 return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.ALL);
                             } case('b'): {
-                                System.out.println("worl");
-                                // word analysis with bar chart
+                                new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.ALL);
                             } case('p'): {
-                                System.out.println("subs in all bar graph");
-                                // word analysis with pie chart
+                                new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.ALL);
                             }
                         }
                     } case('p'): {
@@ -57,50 +51,54 @@ public class ChoiceReader {
                     } case('a'): {
                         switch(third.charAt(0)) {
                             case('l'): {
-                                // frequently active times in r/all in line chart
+                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL);
                             }
                             case('h'): {
-                                // histogram frequently active times over 24h
+                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL);
                             }
                         }
                     }
                 }
             } case('s'): {
                 String fourth = ((String)choices.get(3)).toLowerCase();
-                String filePath = (String)choices.get(4);
+                int maxPosts = (int)choices.get(4);
+                String filePath = (String)choices.get(5);
                 switch(third.charAt(0)){
                     case('w'): {
                         switch(fourth.charAt(0)) {
                             case('w'): {
-                                //frequently used words in subreddit word cloud
+                                new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.SUBREDDIT, second);
                             } case('p'): {
-                                //frequently used words in subreddit pie chart
+                                new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.SUBREDDIT, second);
                             } case('b'): {
-                                //frequently used words in subreddit baR CHART
+                                new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.SUBREDDIT, second);
                             }
                         }
                     } case('a'): {
                         switch (fourth.charAt(0)) {
                             case('l'): {
-                                //frequently active times line chart
+                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second);
                             } case('h'): {
-                                // frequently active times historgram (over 24h)
+                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second);
                             }
                         }
                     }
                 }
             } case('p'): {
-                switch(second.charAt(0)) {
+                //second is post id
+                String fourth = (String)choices.get(3);
+                String filePath = (String)choices.get(4);
+                switch(third.charAt(0)) {
                     case('w'): {
-                        switch(third.charAt(0)) {
+                        switch(fourth.charAt(0)) {
                             case('w'): {
-                                // frequently used words in post word cloud
+                                new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.POST, second);
                             }
                             case('b'): {
-                                // frequently used words bar chart
+                                new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.POST, second);
                             }
                             case('p'): {
-                                //frequently used words pie chart
+                                new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.POST, second);
                             }
                         }
                     } case('u'): {
