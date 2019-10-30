@@ -13,6 +13,7 @@ import org.jfree.ui.RefineryUtilities;
 
 import java.io.File;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Map;
 
 //TODO untested
@@ -50,5 +51,4 @@ public class TimeSeriesGenerator extends ApplicationFrame implements GraphGenera
             System.out.println("Error saving file: " + e);
         }
     }
-
 }

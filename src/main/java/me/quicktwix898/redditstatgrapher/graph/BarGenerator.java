@@ -14,14 +14,25 @@ import java.util.Map;
 
 public class BarGenerator extends ApplicationFrame implements GraphGenerator {
     private JFreeChart chart;
+    boolean sort = true;
     public BarGenerator(String title, Map<String, Integer> data) {
         super(WIN_TITLE);
         chart = ChartFactory.createBarChart(title, "", "Occurances",
                 createDataset(data));
     }
 
-    private static CategoryDataset createDataset(Map<String, Integer> map) {
-        Map<String, Integer> sorted = GraphGenerator.sortByValue(map);
+    public BarGenerator(String title, Map<String, Integer> data, boolean sort) {
+        super(WIN_TITLE);
+        chart = ChartFactory.createBarChart(title, "", "Occurances",
+                createDataset(data));
+        this.sort = sort;
+    }
+
+    private CategoryDataset createDataset(Map<String, Integer> map) {
+        Map<String, Integer> sorted = map;
+        if(sort) {
+           sorted = GraphGenerator.sortByValue(map);
+        }
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         final String defaultCategory = "Default";
         int i=0;
