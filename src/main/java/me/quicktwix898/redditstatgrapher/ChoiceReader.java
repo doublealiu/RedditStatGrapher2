@@ -72,6 +72,7 @@ public class ChoiceReader {
                     case('w'): {
                         switch(fourth.charAt(0)) {
                             case('w'): {
+                                new FrequentWordsAnalysis();
                                 //frequently used words in subreddit word cloud
                             } case('p'): {
                                 //frequently used words in subreddit pie chart
