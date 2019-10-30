@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 import java.util.Map;
 
 //TODO untested
+
 public class TimeSeriesGenerator extends ApplicationFrame implements GraphGenerator {
     private JFreeChart chart;
     public TimeSeriesGenerator(String title, Map<Timestamp, Integer> data) {
