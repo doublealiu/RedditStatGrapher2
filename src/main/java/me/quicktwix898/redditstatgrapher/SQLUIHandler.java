@@ -18,7 +18,7 @@ public class SQLUIHandler {
 
         while (keepLooping){
             new SQLURLScreen().action();
-            config.setJdbcUrl("jdbc:mysql://" + scanner.nextLine());
+            config.setJdbcUrl("jdbc:mysql://www" + scanner.nextLine() + "/redditstat");
 
             new SQLUsernameScreen().action();
             config.setUsername(scanner.nextLine());
