@@ -37,24 +37,18 @@ public class ChoiceReader {
                             case('w'): {
                                 return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.ALL);
                             } case('b'): {
-                                new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.ALL);
+                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.ALL);
                             } case('p'): {
-                                new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.ALL);
-                            }
-                        }
-                    } case('p'): {
-                        switch (third.charAt(0)) {
-                            case('l'): {
-                                // subreddit popularity over time in line chart
+                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.ALL);
                             }
                         }
                     } case('a'): {
                         switch(third.charAt(0)) {
                             case('l'): {
-                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL);
                             }
                             case('h'): {
-                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.HISTOGRAM, AnalysisScope.ALL);
                             }
                         }
                     }
@@ -67,19 +61,25 @@ public class ChoiceReader {
                     case('w'): {
                         switch(fourth.charAt(0)) {
                             case('w'): {
-                                new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.SUBREDDIT, second);
                             } case('p'): {
-                                new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.SUBREDDIT, second);
                             } case('b'): {
-                                new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.SUBREDDIT, second);
                             }
                         }
                     } case('a'): {
                         switch (fourth.charAt(0)) {
                             case('l'): {
-                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second);
                             } case('h'): {
-                                new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.HISTOGRAM, AnalysisScope.SUBREDDIT, second);
+                            }
+                        }
+                    } case('p'): {
+                        switch (third.charAt(0)) {
+                            case('l'): {
+                                return new SubredditPopularityAnalysis(ds, filePath, )
                             }
                         }
                     }
@@ -92,19 +92,19 @@ public class ChoiceReader {
                     case('w'): {
                         switch(fourth.charAt(0)) {
                             case('w'): {
-                                new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.POST, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.POST, second);
                             }
                             case('b'): {
-                                new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.POST, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.POST, second);
                             }
                             case('p'): {
-                                new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.POST, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.POST, second);
                             }
                         }
                     } case('u'): {
                         switch(third.charAt(0)) {
                             case('l'): {
-                                // upvotes over time in post line chart
+                                return new UpvotesOverTimeAnalysis(ds, filePath, second);
                             }
                         }
                     }

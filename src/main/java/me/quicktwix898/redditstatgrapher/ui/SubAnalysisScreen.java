@@ -6,6 +6,7 @@ public class SubAnalysisScreen implements TerminalScreen {
             "Please choose an analysis:\n" +
             "w: frequently used words\n" +
             "a: frequently active times in subreddit\n" +
+            "p: subreddit popularity over time in r/all\n" +
             DASHED_LINE + "\n";
 
     @Override
@@ -20,7 +21,8 @@ public class SubAnalysisScreen implements TerminalScreen {
 
     public enum SubAnalysisScreenChoice implements TerminalChoice{
         words("w", FrequentWordsScreen.getInstance()),
-        active("a", ActiveTimesScreen.getInstance());
+        active("a", ActiveTimesScreen.getInstance()),
+        popularity("p", AllSubPopularityScreen.getInstance());
 
         String character;
         TerminalScreen screen;

@@ -8,7 +8,6 @@ public class AllAnalysisScreen implements TerminalScreen {
             "Please choose an analysis:\n" +
             "s: subreddits in r/all\n" +
             "w: frequently used words\n" +
-            "p: subreddit popularity over time in r/all\n" +
             "a: frequently active times in r/all\n" +
             DASHED_LINE + "\n";
 
@@ -27,7 +26,6 @@ public class AllAnalysisScreen implements TerminalScreen {
     public enum AllAnalysisScreenChoice implements TerminalChoice {
         subreddit("s", AllSubScreen.getInstance()),
         words("w", FrequentWordsScreen.getInstance()),
-        popularity("p", AllSubPopularityScreen.getInstance()),
         active("a", ActiveTimesScreen.getInstance());
 
         String character;
