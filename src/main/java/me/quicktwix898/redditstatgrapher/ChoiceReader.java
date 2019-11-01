@@ -21,7 +21,8 @@ public class ChoiceReader {
         String third = ((String)choices.get(2)).toLowerCase();
         switch(first.charAt(0)){
             case('a'): { // r/all
-                String filePath = (String)choices.get(3);
+                int max = (int)choices.get(3);
+                String filePath = (String)choices.get(4);
                 switch(second.charAt(0)){
                     case('s'): { //subs in all
                         switch(third.charAt(0)){
