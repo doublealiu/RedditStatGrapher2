@@ -1,7 +1,7 @@
 .idea
 RedditStatGrapher.iml
 out/
-src/me/quicktwix898/redditstatgrapher/Test.java
+src/main/java/me/quicktwix898/redditstatgrapher/Test.java
 gradle
 gradlew
 .gradle
