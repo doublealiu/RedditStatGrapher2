@@ -27,6 +27,7 @@ public class FrequentWordsAnalysis implements AnalysisAction {
         this.type = type;
         this.file = file;
         this.scope = scope;
+        query();
     }
 
     public FrequentWordsAnalysis(HikariDataSource ds, GraphType type, String file, AnalysisScope scope, String identifier) {
@@ -42,6 +43,7 @@ public class FrequentWordsAnalysis implements AnalysisAction {
     public void query() {
         try{
             PreparedStatement statement;
+            System.out.println("Choosing query type");
             if(scope == AnalysisScope.ALL){
                 statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM all_posts LIMIT " + MAX_POSTS + ";");
             }else if(scope == AnalysisScope.SUBREDDIT){
@@ -51,13 +53,20 @@ public class FrequentWordsAnalysis implements AnalysisAction {
                 statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM tracked_posts WHERE post_id = ? LIMIT " + MAX_POSTS + ";");
                 statement.setString(1, identifier);
             }
+            System.out.println("executing query...");
             ResultSet set = statement.executeQuery();
             while(set.next()){
+                System.out.println(set.getString("title"));
                 Collections.addAll(list, set.getString("title").split(" "));
                 Collections.addAll(list, set.getString("self_text").split(" "));
             }
             for(String str : list){
-                map.merge(str, 1, Integer::sum);
+                System.out.println(str);
+                if(map.get(str) == null){
+                    map.put(str, 1);
+                }else{
+                    map.put(str, map.get(str) + 1);
+                }
             }
 
             if(type == GraphType.BAR){
