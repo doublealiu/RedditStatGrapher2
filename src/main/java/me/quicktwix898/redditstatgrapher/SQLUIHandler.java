@@ -18,7 +18,7 @@ public class SQLUIHandler {
 
         while (keepLooping){
             new SQLURLScreen().action();
-            config.setJdbcUrl("jdbc:mysql://www" + scanner.nextLine() + "/redditstat");
+            config.setJdbcUrl("jdbc:mysql://" + scanner.nextLine() + "/redditstat");
 
             new SQLUsernameScreen().action();
             config.setUsername(scanner.nextLine());
@@ -32,6 +32,7 @@ public class SQLUIHandler {
                 return new HikariDataSource(config);
             } catch (HikariPool.PoolInitializationException e) {
                 String msg = e.getMessage().toLowerCase();
+                e.printStackTrace();
                 if(msg.contains("communications link failure")) {
                     System.out.println("The Server URL is bad. Please try again.");
                 }else if(msg.contains("access denied for user")){
