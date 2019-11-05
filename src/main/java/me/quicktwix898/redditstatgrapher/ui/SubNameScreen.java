@@ -18,7 +18,9 @@ public class SubNameScreen implements TerminalScreen {
     public static class SubName implements TerminalChoice {
         String name;
 
-        private SubName (String str) { this.name = str; }
+        private SubName (String str) {
+            this.name = str;
+        }
 
         @Override
         public TerminalAction getAction() { return SubAnalysisScreen.getInstance(); }

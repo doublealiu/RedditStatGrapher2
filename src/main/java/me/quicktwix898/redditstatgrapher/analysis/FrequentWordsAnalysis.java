@@ -43,7 +43,6 @@ public class FrequentWordsAnalysis implements AnalysisAction {
     public void query() {
         try{
             PreparedStatement statement;
-            System.out.println("Choosing query type");
             if(scope == AnalysisScope.ALL){
                 statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM all_posts LIMIT " + MAX_POSTS + ";");
             }else if(scope == AnalysisScope.SUBREDDIT){
@@ -53,9 +52,7 @@ public class FrequentWordsAnalysis implements AnalysisAction {
                 statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM tracked_posts WHERE post_id = ? LIMIT " + MAX_POSTS + ";");
                 statement.setString(1, identifier);
             }
-            System.out.println("executing query...");
             ResultSet set = statement.executeQuery();
-            System.out.println("executed query order 66");
             while(set.next()){
                 System.out.println(set.getString("title"));
                 Collections.addAll(list, set.getString("title").split(" "));
@@ -69,6 +66,7 @@ public class FrequentWordsAnalysis implements AnalysisAction {
                     map.put(str, map.get(str) + 1);
                 }
             }
+
             if(type == GraphType.BAR){
                 gen = new BarGenerator(GRAPH_TITLE, map);
             }else if(type == GraphType.PIE){
@@ -78,6 +76,15 @@ public class FrequentWordsAnalysis implements AnalysisAction {
             }
         }catch(SQLException e){
             e.printStackTrace();
+        }
+    }
+
+    private void removeCommon(List<String> list, Map<String, Integer> map){
+        for(String str : removeWords){
+            while(list.contains(str)){
+                list.remove(str);
+            }
+            map.put(str, 0);
         }
     }
 
@@ -91,5 +98,11 @@ public class FrequentWordsAnalysis implements AnalysisAction {
     @Override
     public void save() {
         gen.openWindow();
+    }
+
+    private static final Set<String> removeWords = new HashSet<>();
+    {
+        removeWords.add("");
+        removeWords.add(" ");
     }
 }
