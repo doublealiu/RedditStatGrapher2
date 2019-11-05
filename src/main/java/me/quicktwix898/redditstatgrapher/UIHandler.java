@@ -30,7 +30,12 @@ public class UIHandler {
         while(currentAction != null && currentAction instanceof TerminalScreen){
             String temp = scanner.nextLine();
             input = temp.length() < 1 ? "" : temp.substring(0, 1);
-            TerminalChoice choice = ((TerminalScreen) currentAction).getChoice(input);
+            TerminalChoice choice;
+            if(currentAction instanceof SubNameScreen || currentAction instanceof PostIDScreen) {
+                choice = ((TerminalScreen) currentAction).getChoice(temp);
+            }else{
+                choice = ((TerminalScreen) currentAction).getChoice(input);
+            }
             if(choice != null){
                 choices.add(choice.getString());
                 currentAction = choice.getAction();
@@ -46,6 +51,9 @@ public class UIHandler {
                     System.out.println(((TerminalScreen) currentAction).error());
                 }
             }
+        }
+        for(Object o : choices){
+            System.out.println(o.toString());
         }
         return choices;
     }

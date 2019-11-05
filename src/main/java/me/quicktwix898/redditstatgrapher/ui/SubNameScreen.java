@@ -4,7 +4,7 @@ public class SubNameScreen implements TerminalScreen {
     final static SubNameScreen INSTANCE = new SubNameScreen();
 
     final String message = DASHED_LINE + "\n" +
-            "Please enter a subreddit name you want to analyze: " +
+            "Please enter a subreddit name you want to analyze: \n" +
             DASHED_LINE + "\n";
 
     @Override

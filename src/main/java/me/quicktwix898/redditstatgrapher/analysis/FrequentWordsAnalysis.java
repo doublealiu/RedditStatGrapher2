@@ -69,9 +69,6 @@ public class FrequentWordsAnalysis implements AnalysisAction {
                     map.put(str, map.get(str) + 1);
                 }
             }
-
-            removeCommonWords();
-
             if(type == GraphType.BAR){
                 gen = new BarGenerator(GRAPH_TITLE, map);
             }else if(type == GraphType.PIE){
