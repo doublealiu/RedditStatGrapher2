@@ -23,6 +23,7 @@ public class UpvotesOverTimeAnalysis implements AnalysisAction {
         this.ds = ds;
         this.file = file;
         this.postId = postId;
+        query();
     }
 
     @Override

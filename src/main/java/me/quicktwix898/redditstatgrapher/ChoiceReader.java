@@ -78,7 +78,7 @@ public class ChoiceReader {
                             }
                         }
                     } case('p'): {
-                        switch (third.charAt(0)) {
+                        switch (fourth.charAt(0)) {
                             case('l'): {
                                 return new SubredditPopularityAnalysis(ds, filePath, second);
                             }

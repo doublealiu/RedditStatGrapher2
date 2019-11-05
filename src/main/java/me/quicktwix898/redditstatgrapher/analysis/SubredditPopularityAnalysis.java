@@ -28,6 +28,7 @@ public class SubredditPopularityAnalysis implements AnalysisAction {
         this.ds = ds;
         this.file = file;
         this.subreddit = subreddit;
+        query();
     }
 
     @Override

@@ -37,6 +37,7 @@ public class FrequentlyActiveAnalysis implements AnalysisAction {
         this.type = type;
         this.scope = scope;
         this.subreddit = subreddit;
+        query();
     }
 
     @Override
@@ -79,8 +80,6 @@ public class FrequentlyActiveAnalysis implements AnalysisAction {
                 gen = new BarGenerator(GRAPH_TITLE, map);
             }else if(type == GraphType.LINE){
                 gen = new LineGenerator(GRAPH_TITLE, map);
-            }else{
-                return;
             }
         }catch(SQLException e){
             e.printStackTrace();
