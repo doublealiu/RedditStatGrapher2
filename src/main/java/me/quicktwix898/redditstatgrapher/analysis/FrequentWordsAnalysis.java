@@ -55,6 +55,7 @@ public class FrequentWordsAnalysis implements AnalysisAction {
             }
             System.out.println("executing query...");
             ResultSet set = statement.executeQuery();
+            System.out.println("executed query order 66");
             while(set.next()){
                 System.out.println(set.getString("title"));
                 Collections.addAll(list, set.getString("title").split(" "));
@@ -68,6 +69,8 @@ public class FrequentWordsAnalysis implements AnalysisAction {
                     map.put(str, map.get(str) + 1);
                 }
             }
+
+            removeCommonWords();
 
             if(type == GraphType.BAR){
                 gen = new BarGenerator(GRAPH_TITLE, map);
