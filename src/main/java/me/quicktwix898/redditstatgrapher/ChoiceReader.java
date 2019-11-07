@@ -27,29 +27,29 @@ public class ChoiceReader {
                     case('s'): { //subs in all
                         switch(third.charAt(0)){
                             case('b'): { //bar chart
-                                return new SubsInAllAnalysis(GraphType.BAR, filePath, ds);
+                                return new SubsInAllAnalysis(GraphType.BAR, filePath, ds, max);
                             } case('p'):{ // pie chart
                                 System.out.println("subs in all pie graph");
-                                return new SubsInAllAnalysis(GraphType.PIE, filePath, ds);
+                                return new SubsInAllAnalysis(GraphType.PIE, filePath, ds, max);
                             }
                         }
                     } case('w'): {
                         switch(third.charAt(0)) {
                             case('w'): {
-                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.ALL);
+                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.ALL, max);
                             } case('b'): {
-                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.ALL);
+                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.ALL, max);
                             } case('p'): {
-                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.ALL);
+                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.ALL, max);
                             }
                         }
                     } case('a'): {
                         switch(third.charAt(0)) {
                             case('l'): {
-                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.ALL, max);
                             }
                             case('h'): {
-                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.HISTOGRAM, AnalysisScope.ALL);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.HISTOGRAM, AnalysisScope.ALL, max);
                             }
                         }
                     }
@@ -62,25 +62,25 @@ public class ChoiceReader {
                     case('w'): {
                         switch(fourth.charAt(0)) {
                             case('w'): {
-                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.WORDCLOUD, filePath, AnalysisScope.SUBREDDIT, second, maxPosts);
                             } case('p'): {
-                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.PIE, filePath, AnalysisScope.SUBREDDIT, second, maxPosts);
                             } case('b'): {
-                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentWordsAnalysis(ds, GraphType.BAR, filePath, AnalysisScope.SUBREDDIT, second, maxPosts);
                             }
                         }
                     } case('a'): {
                         switch (fourth.charAt(0)) {
                             case('l'): {
-                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.LINE, AnalysisScope.SUBREDDIT, second, maxPosts);
                             } case('h'): {
-                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.HISTOGRAM, AnalysisScope.SUBREDDIT, second);
+                                return new FrequentlyActiveAnalysis(ds, filePath, GraphType.HISTOGRAM, AnalysisScope.SUBREDDIT, second, maxPosts);
                             }
                         }
                     } case('p'): {
                         switch (fourth.charAt(0)) {
                             case('l'): {
-                                return new SubredditPopularityAnalysis(ds, filePath, second);
+                                return new SubredditPopularityAnalysis(ds, filePath, second, maxPosts);
                             }
                         }
                     }

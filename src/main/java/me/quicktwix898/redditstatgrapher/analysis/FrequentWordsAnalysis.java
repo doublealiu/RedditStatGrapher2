@@ -20,13 +20,15 @@ public class FrequentWordsAnalysis implements AnalysisAction {
     final List<String> list = new ArrayList<>();
     //optional
     String identifier;
+    int max = 5000;
     GraphGenerator gen;
 
-    public FrequentWordsAnalysis(HikariDataSource ds, GraphType type, String file, AnalysisScope scope) {
+    public FrequentWordsAnalysis(HikariDataSource ds, GraphType type, String file, AnalysisScope scope, int max) {
         this.ds = ds;
         this.type = type;
         this.file = file;
         this.scope = scope;
+        this.max = max;
         query();
     }
 
@@ -39,17 +41,27 @@ public class FrequentWordsAnalysis implements AnalysisAction {
         query();
     }
 
+    public FrequentWordsAnalysis(HikariDataSource ds, GraphType type, String file, AnalysisScope scope, String identifier, int max) {
+        this.ds = ds;
+        this.type = type;
+        this.file = file;
+        this.scope = scope;
+        this.identifier = identifier;
+        this.max = max;
+        query();
+    }
+
     @Override
     public void query() {
         try{
             PreparedStatement statement;
             if(scope == AnalysisScope.ALL){
-                statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM all_posts LIMIT " + MAX_POSTS + ";");
+                statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM all_posts LIMIT " + max + ";");
             }else if(scope == AnalysisScope.SUBREDDIT){
-                statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM subreddit_posts WHERE subreddit = ? LIMIT " + MAX_POSTS + ";");
+                statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM subreddit_posts WHERE subreddit = ? LIMIT " + max + ";");
                 statement.setString(1, identifier);
             }else {
-                statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM tracked_posts WHERE post_id = ? LIMIT " + MAX_POSTS + ";");
+                statement = ds.getConnection().prepareStatement("SELECT title, self_text FROM tracked_posts WHERE post_id = ? LIMIT " + max + ";");
                 statement.setString(1, identifier);
             }
             ResultSet set = statement.executeQuery();
@@ -101,7 +113,7 @@ public class FrequentWordsAnalysis implements AnalysisAction {
     }
 
     private static final Set<String> removeWords = new HashSet<>();
-    {
+    static {
         removeWords.add("");
         removeWords.add(" ");
         removeWords.add("the");

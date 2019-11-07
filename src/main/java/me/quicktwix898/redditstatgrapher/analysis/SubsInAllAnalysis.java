@@ -18,6 +18,7 @@ public class SubsInAllAnalysis implements AnalysisAction {
     GraphType type;
     String file;
     HikariDataSource ds;
+    int max = 5000;
     final Map<String, Integer> map = new HashMap<>();
     GraphGenerator gen;
 
@@ -28,10 +29,18 @@ public class SubsInAllAnalysis implements AnalysisAction {
         query();
     }
 
+    public SubsInAllAnalysis(GraphType type, String file, HikariDataSource ds, int max) {
+        this.type = type;
+        this.file = file;
+        this.ds = ds;
+        this.max = max;
+        query();
+    }
+
     @Override
     public void query(){
         try{
-            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT " + MAX_POSTS + ";");
+            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT " + max + ";");
             ResultSet result = statement.executeQuery();
             while(result.next()){
                 String str = result.getString("subreddit");

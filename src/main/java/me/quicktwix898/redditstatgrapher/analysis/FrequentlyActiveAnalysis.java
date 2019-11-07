@@ -17,17 +17,18 @@ public class FrequentlyActiveAnalysis implements AnalysisAction {
     String file;
     GraphType type;
     AnalysisScope scope;
-
     GraphGenerator gen;
     String subreddit;
+    int max = 5000;
     //data
     final SortedMap<String, Integer> map = new TreeMap<>();
 
-    public FrequentlyActiveAnalysis(HikariDataSource ds, String file, GraphType type, AnalysisScope scope) {
+    public FrequentlyActiveAnalysis(HikariDataSource ds, String file, GraphType type, AnalysisScope scope, int max) {
         this.ds = ds;
         this.file = file;
         this.type = type;
         this.scope = scope;
+        this.max = max;
         query();
     }
 
@@ -40,17 +41,27 @@ public class FrequentlyActiveAnalysis implements AnalysisAction {
         query();
     }
 
+    public FrequentlyActiveAnalysis(HikariDataSource ds, String file, GraphType type, AnalysisScope scope, String subreddit, int max) {
+        this.ds = ds;
+        this.file = file;
+        this.type = type;
+        this.scope = scope;
+        this.max = max;
+        this.subreddit = subreddit;
+        query();
+    }
+
     @Override
     public void query(){
         try{
             PreparedStatement statement;
             if(scope == AnalysisScope.SUBREDDIT){
                 statement = ds.getConnection().prepareStatement("SELECT MIN(time) FROM subreddit_posts WHERE subreddit = ? AND " +
-                        "time < NOW() AND time > ADDDATE(NOW(), INTERVAL -1 DAY) GROUP BY post_id LIMIT " + MAX_POSTS);
+                        "time < NOW() AND time > ADDDATE(NOW(), INTERVAL -1 DAY) GROUP BY post_id LIMIT " + max + ";");
                 statement.setString(1, subreddit);
             }else if(scope == AnalysisScope.ALL){
                 statement = ds.getConnection().prepareStatement("SELECT MIN(time) FROM subreddit_posts " +
-                        "WHERE time < NOW() AND time > ADDDATE(NOW(), INTERVAL -1 DAY) GROUP BY post_id LIMIT " + MAX_POSTS);
+                        "WHERE time < NOW() AND time > ADDDATE(NOW(), INTERVAL -1 DAY) GROUP BY post_id LIMIT " + max + ";");
             }else{
                 return;
             }

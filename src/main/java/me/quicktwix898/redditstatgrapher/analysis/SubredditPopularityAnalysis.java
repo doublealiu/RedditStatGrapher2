@@ -22,6 +22,7 @@ public class SubredditPopularityAnalysis implements AnalysisAction {
 
     GraphGenerator gen;
     String subreddit;
+    int max = 5000;
     final SortedMap<String, Integer> map = new TreeMap<>();
 
     public SubredditPopularityAnalysis(HikariDataSource ds, String file, String subreddit) {
@@ -31,10 +32,18 @@ public class SubredditPopularityAnalysis implements AnalysisAction {
         query();
     }
 
+    public SubredditPopularityAnalysis(HikariDataSource ds, String file, String subreddit, int max) {
+        this.ds = ds;
+        this.file = file;
+        this.subreddit = subreddit;
+        this.max = max;
+        query();
+    }
+
     @Override
     public void query(){
         try {
-            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT time FROM all_posts WHERE subreddit=? LIMIT " + MAX_POSTS);
+            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT time FROM all_posts WHERE subreddit=? LIMIT " + max + ";");
             statement.setString(1, subreddit);
             ResultSet set = statement.executeQuery();
             while(set.next()){

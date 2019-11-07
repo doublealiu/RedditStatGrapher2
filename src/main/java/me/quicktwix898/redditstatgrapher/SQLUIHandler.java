@@ -31,15 +31,8 @@ public class SQLUIHandler {
             try {
                 return new HikariDataSource(config);
             } catch (HikariPool.PoolInitializationException e) {
-                String msg = e.getMessage().toLowerCase();
-                e.printStackTrace();
-                if(msg.contains("communications link failure")) {
-                    System.out.println("The Server URL is bad. Please try again.");
-                }else if(msg.contains("access denied for user")){
-                    System.out.println("Bad username or password. Please try again.");
-                }else{
-                    keepLooping = false;
-                }
+                System.out.println("An error occured while trying to create a connection to the database. " +
+                        "\nPlease try again");
             /* server address wrong
             Failed to initialize pool: Communications link failure
 

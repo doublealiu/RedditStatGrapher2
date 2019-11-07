@@ -18,6 +18,7 @@ public class UpvotesOverTimeAnalysis implements AnalysisAction {
     String file;
     String postId;
     GraphGenerator gen;
+    int max = 5000;
 
     public UpvotesOverTimeAnalysis(HikariDataSource ds, String file, String postId) {
         this.ds = ds;
@@ -26,10 +27,18 @@ public class UpvotesOverTimeAnalysis implements AnalysisAction {
         query();
     }
 
+    public UpvotesOverTimeAnalysis(HikariDataSource ds, String file, String postId, int max) {
+        this.ds = ds;
+        this.file = file;
+        this.postId = postId;
+        this.max = max;
+        query();
+    }
+
     @Override
     public void query() {
         try{
-            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT time, points FROM tracked_posts WHERE post_id=? LIMIT " + MAX_POSTS);
+            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT time, points FROM tracked_posts WHERE post_id=? LIMIT " + max + ";");
             statement.setString(1, postId);
             ResultSet set = statement.executeQuery();
             SortedMap<String, Integer> map = new TreeMap<>();

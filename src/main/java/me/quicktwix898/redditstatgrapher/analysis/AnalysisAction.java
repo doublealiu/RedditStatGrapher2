@@ -4,6 +4,4 @@ public interface AnalysisAction {
     void query();
     void graph();
     void save();
-
-    int MAX_POSTS = 5000;
 }
