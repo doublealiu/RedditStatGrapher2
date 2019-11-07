@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args){
         HikariDataSource ds = SQLUIHandler.start();
         List<Object> choices = UIHandler.getInstance().start();
-        AnalysisAction analysis = new ChoiceReader(choices, null).get();
+        AnalysisAction analysis = new ChoiceReader(choices, ds).get();
         analysis.graph();
         analysis.save();
     }
