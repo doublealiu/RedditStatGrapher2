@@ -52,9 +52,6 @@ public class UIHandler {
                 }
             }
         }
-        for(Object o : choices){
-            System.out.println(o.toString());
-        }
         return choices;
     }
 }

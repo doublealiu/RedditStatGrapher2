@@ -1,7 +1,7 @@
 package me.quicktwix898.redditstatgrapher.ui;
 
 public interface TerminalScreen extends TerminalAction {
-    String DASHED_LINE = "------------------------------------------------------------";
+    String DASHED_LINE = "----------------------------------------------------------------------";
 
     String getDisplay();
 
