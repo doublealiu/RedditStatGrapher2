@@ -40,11 +40,19 @@ public class SubsInAllAnalysis implements AnalysisAction {
     @Override
     public void query(){
         try{
-            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT " + max + ";");
+            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT 5000;");
             ResultSet result = statement.executeQuery();
             while(result.next()){
                 String str = result.getString("subreddit");
-                map.merge(str, 1, Integer::sum);
+                if(map.get(str) == null){
+                    map.put(str, 0);
+                }
+                map.put(str, map.get(str) + 1);
+            }
+
+            for(Map.Entry<String, Integer> entry : map.entrySet()){
+                System.out.println(entry.getKey());
+                System.out.println(entry.getValue());
             }
             if(type == GraphType.BAR){
                 gen = new BarGenerator(GRAPH_TITLE, map);
