@@ -40,7 +40,8 @@ public class SubsInAllAnalysis implements AnalysisAction {
     @Override
     public void query(){
         try{
-            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT 5000;");
+            PreparedStatement statement = ds.getConnection().prepareStatement("SELECT subreddit FROM all_posts LIMIT ?;");
+            statement.setInt(1, max);
             ResultSet result = statement.executeQuery();
             while(result.next()){
                 String str = result.getString("subreddit");
