@@ -31,7 +31,7 @@ public class UIHandler {
             String temp = scanner.nextLine();
             input = temp.length() < 1 ? "" : temp.substring(0, 1);
             TerminalChoice choice;
-            if(currentAction instanceof SubNameScreen || currentAction instanceof PostIDScreen) {
+            if(currentAction instanceof SubNameScreen || currentAction instanceof PostIDScreen || currentAction instanceof PostNumberScreen) {
                 choice = ((TerminalScreen) currentAction).getChoice(temp);
             }else{
                 choice = ((TerminalScreen) currentAction).getChoice(input);

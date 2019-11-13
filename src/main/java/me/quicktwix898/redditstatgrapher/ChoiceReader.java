@@ -25,6 +25,7 @@ public class ChoiceReader {
                 String filePath = (String)choices.get(4);
                 switch(second.charAt(0)){
                     case('s'): { //subs in all
+                        System.out.println(max + "");
                         switch(third.charAt(0)){
                             case('b'): { //bar chart
                                 return new SubsInAllAnalysis(GraphType.BAR, filePath, ds, max);
